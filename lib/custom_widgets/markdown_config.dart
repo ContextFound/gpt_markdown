@@ -141,6 +141,7 @@ class GptMarkdownConfig {
     this.checkBoxBuilder,
     this.radioButtonBuilder,
     this.showFrontmatter = true,
+    this.rawText,
   });
 
   /// The direction of the text.
@@ -226,6 +227,13 @@ class GptMarkdownConfig {
   /// Defaults to `true`.
   final bool showFrontmatter;
 
+  /// The raw markdown text content of the current element.
+  ///
+  /// This is populated by component builders (e.g., checkbox, radio button)
+  /// before calling custom builders, enabling identification and interaction
+  /// with specific elements.
+  final String? rawText;
+
   /// A copy of the configuration with the specified parameters.
   GptMarkdownConfig copyWith({
     TextStyle? style,
@@ -252,6 +260,7 @@ class GptMarkdownConfig {
     final CheckBoxBuilder? checkBoxBuilder,
     final RadioButtonBuilder? radioButtonBuilder,
     final bool? showFrontmatter,
+    final String? rawText,
   }) {
     return GptMarkdownConfig(
       style: style ?? this.style,
@@ -278,6 +287,7 @@ class GptMarkdownConfig {
       checkBoxBuilder: checkBoxBuilder ?? this.checkBoxBuilder,
       radioButtonBuilder: radioButtonBuilder ?? this.radioButtonBuilder,
       showFrontmatter: showFrontmatter ?? this.showFrontmatter,
+      rawText: rawText ?? this.rawText,
     );
   }
 
